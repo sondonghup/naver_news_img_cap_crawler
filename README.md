@@ -1,0 +1,1 @@
+# navernews_img-cap
