@@ -24,7 +24,7 @@ def crawl(img_dir, cap_dir, img_dir_num, url, file_num):
         os.mkdir(img_dir_name)
 
     for img_cap in img_caps:
-        if len(os.listdir(img_dir_name)) < file_num:
+        if len(os.listdir(img_dir_name)) < int(file_num):
             if img_cap.find("em", "img_desc") != None:
                 image = img_cap.find("img")["data-src"]
                 caption = img_cap.find("em", "img_desc").get_text()
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     img_dir = args.imgdir
     cap_dir = args.capdir
 
-    for date in range(args.start, args.end):
+    for date in range(int(args.start), int(args.end)):
         url_list = naver_news(args.category, date)
         for url in url_list:
             img_dir, img_dir_num = crawl(img_dir, cap_dir, img_dir_num, url, args.num)
